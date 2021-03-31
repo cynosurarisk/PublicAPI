@@ -66,3 +66,40 @@ JSON content would look like this:
   "showZeroValue": false
 }
 ````
+This is equivalent to our SDK object, after serialization:
+
+````csharp
+WSCRiskRequests view = new WSCRiskRequests();
+view.Fund = "Tungsten";
+view.Groupings.Clear();
+view.Groupings.Add("strat");
+
+WSCVaRRequest r1 = new WSCVaRRequest();
+r1.ShowPrevious = false;
+r1.CustomIdentifier = "Confidence 0.95";
+r1.UseModelMonteCarlo = true;
+r1.UseModelHistorical = true;
+r1.Confidence = 0.95;
+r1.ShowIncremental = true;
+r1.ShowNAV = true;
+r1.ShowTailRisk = true;
+
+view.RiskRequests.Add(r1);
+
+//JSON settings
+var indented = Formatting.Indented;
+var settings = new JsonSerializerSettings()
+{
+    TypeNameHandling = TypeNameHandling.Auto,
+    ContractResolver = new CamelCasePropertyNamesContractResolver()
+};
+string serObj = JsonConvert.SerializeObject(view, indented, settings);
+
+var bytes = Encoding.UTF8.GetBytes(serObj);
+int size = bytes.Length;
+
+StringContent content = new StringContent(serObj, Encoding.UTF8, "application/json");
+
+````
+
+
