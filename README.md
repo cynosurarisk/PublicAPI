@@ -36,27 +36,7 @@ JSON content would look like this:
 ````json
 {
   "date": null,
-  "batchID": 0,
   "riskRequests": [
-    {
-      "$type": "Wolfram.WSCVaRRequest, wolfram.lib",
-      "confidence": 0.95,
-      "horizon": 1.0,
-      "useModelMonteCarlo": true,
-      "useModelHistorical": true,
-      "useModelHybrid": false,
-      "useModelParametric": false,
-      "showIncremental": true,
-      "showComponent": false,
-      "showComponentRatio": false,
-      "showTailRisk": true,
-      "customIdentifier": "Confidence 0.95",
-      "showCurrency": true,
-      "showRatio": false,
-      "showNAV": true,
-      "showPrevious": false,
-      "showChange": false
-    },
     {
       "$type": "Wolfram.WSCVaRRequest, wolfram.lib",
       "confidence": 0.99,
