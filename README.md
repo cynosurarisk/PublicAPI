@@ -61,7 +61,7 @@ JSON content would look like this:
     "strat"
   ],
   "parentFund": "",
-  "fund": "Tungsten",
+  "fund": "WolfFund",
   "strategy": "",
   "showZeroValue": false
 }
@@ -70,7 +70,7 @@ This is equivalent to our SDK object, after serialization:
 
 ````csharp
 WSCRiskRequests view = new WSCRiskRequests();
-view.Fund = "Tungsten";
+view.Fund = "WolfFund";
 view.Groupings.Clear();
 view.Groupings.Add("strat");
 
