@@ -1,6 +1,11 @@
 # Public API
 Samples and API descriptions
 
+[Upload API details](https://github.com/cynosurarisk/PublicAPI#upload-api)
+[Risk API details](https://github.com/cynosurarisk/PublicAPI#risk-api)
+
+
+
 ## Upload API ##
 
 Here is how in C#, the upload would be posted. 
