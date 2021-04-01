@@ -1,4 +1,4 @@
-# PublicAPI
+# Public API
 Samples and API descriptions
 
 ## Upload API ##
@@ -33,9 +33,59 @@ using (var httpClient = new HttpClient())
     }
 }
 ````
-JSON content would look like this:
+This is equivalent to our SDK object (future release), after serialization:
 
-````json
+````csharp
+List<StrategyEntity> es = new List<StrategyEntity>();
+List<PLEntity> pls = new List<PLEntity>();
+List<FundEntity> funds = new List<FundEntity>();
+List<PutCallScheduleEntity> pces = new List<PutCallScheduleEntity>();
+List<NAVEntity> navs = new List<NAVEntity>();
+List<ClearerEntity> clrs = new List<ClearerEntity>();
+
+List<SecurityEntity> secs = new List<SecurityEntity>();
+List<SecurityHistoryEntity> sechs = new List<SecurityHistoryEntity>();
+
+
+AllEntities aes = new AllEntities();
+aes.Settings.Date = date;
+
+TesterDB db = new TesterDB() //your own code to query your system/database
+es = db.GetStrategies();
+pls = db.GetPLs(aes.Settings.Date);
+funds = db.GetFunds();
+pces = db.GetPutCallSchedule();
+navs = db.GetNAVs(aes.Settings.Date);
+clrs = db.GetClearer();
+secs = db.GetSecurities();
+sechs = db.GetSecurityHistories(aes.Settings.Date);
+
+aes.Strategies = new StrategyEntities();
+aes.Strategies.InsertAction = InsertActionType.DELETEALL_INSERT;
+aes.Strategies.InsertTransaction = InsertTransactionType.ATOMIC;
+aes.Strategies.Rows = es;
+
+aes.PLs = new PLEntities();
+aes.PLs.InsertAction = InsertActionType.DELETEALL_INSERT;
+aes.PLs.Rows = pls;
+
+aes.Funds = new FundEntities();
+aes.Funds.Rows = funds;
+
+aes.PutCallSchedules = new PutCallScheduleEntities();
+aes.PutCallSchedules.Rows = pces;
+
+aes.NAVs = new NAVEntities();
+aes.NAVs.Rows = navs;
+
+aes.Clearers = new ClearerEntities();
+aes.Clearers.Rows = clrs;
+
+aes.Securities = new SecurityEntities();
+aes.Securities.Rows = secs;
+
+aes.SecurityHistories = new SecurityHistoryEntities();
+aes.SecurityHistories.Rows = sechs;
 ````
 
 ## Risk API ##
@@ -107,7 +157,7 @@ JSON content would look like this:
   "showZeroValue": false
 }
 ````
-This is equivalent to our SDK object, after serialization:
+This is equivalent to our SDK object (future release), after serialization:
 
 ````csharp
 WSCRiskRequests view = new WSCRiskRequests();
