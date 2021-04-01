@@ -33,7 +33,7 @@ using (var httpClient = new HttpClient())
     }
 }
 ````
-This is equivalent to our SDK object (future release), after serialization:
+This is C# snippet using our SDK object (future release), that would be serialized to `content` variable (above)
 
 ````csharp
 List<StrategyEntity> es = new List<StrategyEntity>();
@@ -45,7 +45,6 @@ List<ClearerEntity> clrs = new List<ClearerEntity>();
 
 List<SecurityEntity> secs = new List<SecurityEntity>();
 List<SecurityHistoryEntity> sechs = new List<SecurityHistoryEntity>();
-
 
 AllEntities aes = new AllEntities();
 aes.Settings.Date = date;
@@ -157,7 +156,7 @@ JSON content would look like this:
   "showZeroValue": false
 }
 ````
-This is equivalent to our SDK object (future release), after serialization:
+This is equivalent in C# using our SDK object (future release), that would be serialized and generate the JSON code as above
 
 ````csharp
 WSCRiskRequests view = new WSCRiskRequests();
