@@ -1,9 +1,9 @@
 # PublicAPI
 Samples and API descriptions
 
-***Upload API***
+## Upload API ##
 
-***Risk API***
+## Risk API ##
 
 Here is how in C#, the request would be posted. 
 
