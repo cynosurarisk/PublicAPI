@@ -1,10 +1,14 @@
 # PublicAPI
 Samples and API descriptions
 
+***Upload API***
+
+***Risk API***
+
 Here is how in C#, the request would be posted. 
 
 
-**`content`** variable below is your JSON request
+The **`content`** variable below is your JSON request
 
 
 ````csharp
