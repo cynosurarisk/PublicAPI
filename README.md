@@ -3,6 +3,41 @@ Samples and API descriptions
 
 ## Upload API ##
 
+Here is how in C#, the upload would be posted. 
+
+
+The **`content`** variable below is your JSON data
+
+
+````csharp
+CancellationTokenSource tokenSource = new CancellationTokenSource();
+using (var httpClient = new HttpClient())
+{
+    httpClient.DefaultRequestHeaders.Add("wolfram-token", ".......YOUR TOKEN GOES HERE.......");
+    try
+    {
+        using (var response = await httpClient.PostAsync("https://[CLIENT].wolframrisk.com/api/uploader/v0.1/portfoliodata/", content))
+        {
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                string errorResponse = await response.Content.ReadAsStringAsync(tokenSource.Token);
+            }
+            else
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync(tokenSource.Token);
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+    }
+}
+````
+JSON content would look like this:
+
+````json
+````
+
 ## Risk API ##
 
 Here is how in C#, the request would be posted. 
